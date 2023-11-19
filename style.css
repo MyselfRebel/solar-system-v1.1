@@ -1,0 +1,71 @@
+body {
+    background: url(./images/space.jpg)
+                center no-repeat;
+    background-size: cover;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sun {
+    background: url(./images/sun.jpg);
+    width: 5em;
+    height: 5em;
+    position: absolute;
+    box-shadow: inset -.5em -.5em .5em #000,
+                -0.125em -0.125em .25em #ec5300;
+    animation: rotate 10s linear infinite;
+}
+
+.earth {
+    background: url(./images/earth.jpg);
+    width: 2em;
+    height: 2em;
+    left: -10em;
+    top: 50%;
+    position: absolute; 
+    z-index: 1;
+    box-shadow: inset -0.3em -0.3em 0.3em #000, 
+                -0.067em -0.067em 0.167em #ccc;
+    transform: translateY(-50%);
+    animation: rotate 5s linear infinite,
+        orbit 10s infinite ease-in-out;
+}
+
+.earth, .sun {
+    border-radius: 50%;
+    background-repeat: repeat;
+    background-size: 200% 100%;
+}
+
+ .moon {
+    background-color: silver;
+    top: 50%;
+    left: -10em;
+    right: 0.2em;
+    width: .8em;
+    height: .8em;
+    border-radius: 50%;
+    box-shadow: inset -0.125em -0.125em 0.125em #000, -0.125em -0.125em 0.125em #ccc;
+    transform: translateY(-50%);
+    animation: orbit 2.7s linear infinite;
+}
+
+@keyframes rotate {
+    to { background-position: -200% 0; }
+}
+
+@keyframes orbit {
+    49% { z-index: 1; }
+    50% {
+        left: 10em;
+        z-index: -1;
+    }
+    99% { z-index: -1; }
+    100% {
+        left: -10em;
+        z-index: 1;
+    }
+}
